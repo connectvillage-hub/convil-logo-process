@@ -852,7 +852,7 @@ function submitForm() {
     };
 
     /* Google Sheets 전송 */
-    var sendToSheets = APPS_SCRIPT_URL !== 'https://script.google.com/macros/s/AKfycbx7qTIzWgzPl3oMioXAYEsA_ygqDb7Unb2L_4hff-jgKpJSW6rJrtyfZ338PhEFfECwMg/exec'
+    var sendToSheets = /^https:\/\/script\.google\.com\//.test(APPS_SCRIPT_URL)
       ? fetch(APPS_SCRIPT_URL, {
           method: 'POST',
           mode: 'no-cors',
