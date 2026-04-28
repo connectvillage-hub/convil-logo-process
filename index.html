@@ -267,6 +267,69 @@ body {
 }
 @keyframes spin { to { transform: rotate(360deg); } }
 
+/* 업로드 중 모달 */
+.upload-modal {
+  display: none;
+  position: fixed; inset: 0;
+  background: rgba(28,25,21,.72);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  z-index: 9999;
+  align-items: center; justify-content: center;
+  padding: 24px;
+  animation: fadeIn .25s ease;
+}
+.upload-modal.show { display: flex; }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+.upload-modal-card {
+  background: var(--warm-white);
+  border-radius: 18px;
+  padding: 48px 36px 36px;
+  max-width: 420px; width: 100%;
+  text-align: center;
+  box-shadow: 0 24px 60px rgba(0,0,0,.35);
+  animation: slideUp .3s ease;
+}
+@keyframes slideUp { from { transform: translateY(16px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+
+.upload-spinner-lg {
+  width: 56px; height: 56px;
+  border: 3px solid var(--gold-pale);
+  border-top-color: var(--gold);
+  border-radius: 50%;
+  margin: 0 auto 24px;
+  animation: spin .9s linear infinite;
+}
+.upload-modal-title {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 21px; font-weight: 500;
+  color: var(--charcoal);
+  margin-bottom: 12px;
+}
+.upload-modal-desc {
+  font-size: 13.5px;
+  color: var(--text-muted);
+  line-height: 1.8;
+  margin-bottom: 6px;
+}
+.upload-modal-time {
+  font-size: 13px;
+  color: var(--gold);
+  font-weight: 500;
+  margin-bottom: 22px;
+}
+.upload-modal-warn {
+  font-size: 12px;
+  color: var(--text-muted);
+  background: var(--ivory);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 12px 16px;
+  line-height: 1.6;
+}
+.upload-modal-warn strong { color: var(--charcoal); font-weight: 500; }
+
 /* 완료 화면 */
 .success-screen { display: none; max-width: 640px; margin: 0 auto; padding: 64px 32px 80px; text-align: center; }
 .success-icon {
@@ -657,7 +720,8 @@ body {
     <h2 class="success-title">질문지가 제출되었습니다</h2>
     <p class="success-desc">
       답변해 주신 내용을 바탕으로 컨빌디자인 팀이 로고 시안을 준비합니다.<br>
-      <strong style="color:var(--gold);font-weight:500;">3일 이내</strong>로 3~4가지 로고 시안을 제안드리겠습니다.
+      <strong style="color:var(--gold);font-weight:500;">3일 이내</strong>로 3~4가지 로고 시안을 제안드리겠습니다.<br>
+      <span style="font-size:13px;color:var(--text-light);">이제 이 창을 닫으셔도 됩니다.</span>
     </p>
     <div class="success-summary" id="successSummary"></div>
     <div style="margin-top:32px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
@@ -668,6 +732,20 @@ body {
         style="display:inline-block;padding:12px 28px;border:1px solid var(--gold);border-radius:30px;color:var(--gold);font-size:13px;text-decoration:none;">
         컨빌디자인 홈페이지 →
       </a>
+    </div>
+  </div>
+
+  <!-- 업로드 진행 모달 -->
+  <div class="upload-modal" id="uploadModal" role="dialog" aria-live="polite" aria-modal="true">
+    <div class="upload-modal-card">
+      <div class="upload-spinner-lg"></div>
+      <h3 class="upload-modal-title" id="uploadModalTitle">제출하고 있습니다</h3>
+      <p class="upload-modal-desc" id="uploadModalDesc">잠시만 기다려 주세요.</p>
+      <p class="upload-modal-time" id="uploadModalTime">최대 1분 정도 소요될 수 있습니다.</p>
+      <p class="upload-modal-warn">
+        <strong>창을 닫지 마세요.</strong><br>
+        업로드가 완료되면 안내 메시지가 표시됩니다.
+      </p>
     </div>
   </div>
 
@@ -813,6 +891,28 @@ function validate() {
   return valid;
 }
 
+/* ─── 업로드 진행 모달 제어 ─── */
+function showUploadModal() {
+  var n = uploadedFiles.length;
+  var totalMB = uploadedFiles.reduce(function(s, f){ return s + f.size; }, 0) / 1024 / 1024;
+
+  document.getElementById('uploadModalTitle').textContent =
+    n > 0 ? '파일을 업로드하고 있습니다' : '제출하고 있습니다';
+  document.getElementById('uploadModalDesc').textContent =
+    n > 0
+      ? n + '개의 파일(총 ' + totalMB.toFixed(1) + 'MB)을 안전하게 전송 중입니다.'
+      : '잠시만 기다려 주세요.';
+  document.getElementById('uploadModalTime').textContent =
+    n > 0 ? '최대 1분 정도 소요될 수 있습니다.' : '몇 초 안에 완료됩니다.';
+
+  document.getElementById('uploadModal').classList.add('show');
+  document.body.style.overflow = 'hidden';
+}
+function hideUploadModal() {
+  document.getElementById('uploadModal').classList.remove('show');
+  document.body.style.overflow = '';
+}
+
 /* ─── 제출 ─── */
 function submitForm() {
   if (!validate()) return;
@@ -824,13 +924,14 @@ function submitForm() {
     return;
   }
 
-  /* 로딩 상태 */
+  /* 로딩 상태 + 모달 표시 */
   var btn = document.getElementById('submitBtn');
   var spinner = document.getElementById('spinner');
   var submitText = document.getElementById('submitText');
   btn.disabled = true;
   spinner.style.display = 'block';
   submitText.textContent = uploadedFiles.length ? '파일 업로드 중...' : '제출 중...';
+  showUploadModal();
 
   /* 파일들을 base64로 인코딩 */
   Promise.all(uploadedFiles.map(fileToBase64)).then(function(filesPayload){
@@ -862,9 +963,10 @@ function submitForm() {
       : Promise.resolve();
 
     sendToSheets
-      .then(function(){ showSuccess(payload); })
-      .catch(function(){ showSuccess(payload); }); /* 연결 전에도 완료 화면 표시 */
+      .then(function(){ hideUploadModal(); showSuccess(payload); })
+      .catch(function(){ hideUploadModal(); showSuccess(payload); }); /* 연결 전에도 완료 화면 표시 */
   }).catch(function(err){
+    hideUploadModal();
     alert('파일 처리 중 오류가 발생했습니다. 다시 시도해 주세요.');
     console.error(err);
     btn.disabled = false;
