@@ -1,0 +1,900 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>컨빌디자인 — 교회 로고 제작 안내</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;500;600&family=Noto+Sans+KR:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --ivory: #F7F4EE;
+  --warm-white: #FDFBF8;
+  --charcoal: #2A2520;
+  --dark-brown: #1C1915;
+  --gold: #B8924A;
+  --gold-light: #D4AE72;
+  --gold-pale: #F0E4CC;
+  --text-main: #2A2520;
+  --text-muted: #7A6E62;
+  --text-light: #A89E92;
+  --border: #E0D8CC;
+  --border-strong: #C4B89A;
+}
+
+body {
+  font-family: 'Noto Sans KR', sans-serif;
+  background: var(--warm-white);
+  color: var(--text-main);
+  line-height: 1.8;
+  min-height: 100vh;
+}
+
+/* ── PAGE SYSTEM ── */
+.page { display: none; }
+.page.active { display: block; }
+
+/* ── HEADER ── */
+.header {
+  background: var(--dark-brown);
+  padding: 72px 40px 56px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.header::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(-45deg, transparent, transparent 40px, rgba(184,146,74,.04) 40px, rgba(184,146,74,.04) 41px);
+  pointer-events: none;
+}
+.header-eyebrow { font-size: 10px; letter-spacing: 4px; text-transform: uppercase; color: var(--gold-light); margin-bottom: 18px; position: relative; }
+.header-title { font-family: 'Noto Serif KR', serif; font-size: clamp(26px, 5vw, 42px); font-weight: 300; line-height: 1.4; color: #F7F4EE; margin-bottom: 14px; position: relative; }
+.header-title em { font-style: normal; color: var(--gold-light); }
+.header-subtitle { font-size: 13px; color: rgba(247,244,238,.5); font-weight: 300; letter-spacing: .5px; position: relative; }
+.header-line { width: 40px; height: 1px; background: var(--gold); margin: 24px auto 0; position: relative; }
+
+/* 페이지2 전용 헤더 - 뒤로가기 포함 */
+.header-back {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  padding: 60px 40px 48px;
+}
+.back-btn {
+  position: absolute;
+  left: 32px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: none;
+  border: 1px solid rgba(184,146,74,.4);
+  border-radius: 24px;
+  color: var(--gold-light);
+  font-size: 12px;
+  font-family: 'Noto Sans KR', sans-serif;
+  letter-spacing: 1px;
+  padding: 8px 16px;
+  cursor: pointer;
+  transition: all .2s;
+}
+.back-btn:hover { background: rgba(184,146,74,.1); border-color: var(--gold-light); }
+
+/* ── SECTION ── */
+.section-header {
+  max-width: 840px;
+  margin: 0 auto;
+  padding: 60px 32px 0;
+}
+.section-label { display: flex; align-items: center; gap: 16px; margin-bottom: 8px; }
+.section-label span { font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); font-weight: 400; white-space: nowrap; }
+.section-label::after { content: ''; flex: 1; height: .5px; background: var(--border); }
+.section-title { font-family: 'Noto Serif KR', serif; font-size: 26px; font-weight: 400; color: var(--charcoal); margin-bottom: 10px; }
+.section-desc { font-size: 14px; color: var(--text-muted); font-weight: 300; line-height: 1.9; }
+
+/* ── FLOW OVERVIEW ── */
+.flow-overview {
+  background: var(--ivory);
+  border: .5px solid var(--border);
+  border-radius: 12px;
+  padding: 24px 28px;
+  max-width: 776px;
+  margin: 32px auto 0;
+}
+.flow-steps { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 6px; }
+.flow-pill { background: white; border: .5px solid var(--border-strong); border-radius: 24px; padding: 8px 18px; font-size: 12.5px; color: var(--text-main); white-space: nowrap; }
+.flow-arrow { color: var(--gold); font-size: 14px; flex-shrink: 0; }
+
+/* ── PROCESS STEPS ── */
+.process { max-width: 840px; margin: 0 auto; padding: 44px 32px 0; }
+
+.step { display: grid; grid-template-columns: 60px 1fr; margin-bottom: 2px; }
+.step-left { display: flex; flex-direction: column; align-items: center; }
+.step-num {
+  width: 46px; height: 46px; border-radius: 50%;
+  border: 1px solid var(--border-strong);
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Noto Serif KR', serif; font-size: 15px; color: var(--gold);
+  background: var(--warm-white); flex-shrink: 0; position: relative; z-index: 1;
+}
+.step-line { width: 1px; flex: 1; background: var(--border); margin: 6px 0; min-height: 36px; }
+.step:last-child .step-line { display: none; }
+.step-body { padding: 0 0 44px 24px; }
+.step-tag { font-size: 10px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--gold); font-weight: 400; margin-bottom: 6px; display: block; }
+.step-title { font-family: 'Noto Serif KR', serif; font-size: 19px; font-weight: 500; color: var(--charcoal); margin-bottom: 10px; }
+.step-desc { font-size: 14px; color: var(--text-muted); line-height: 1.85; font-weight: 300; margin-bottom: 14px; }
+.badge-row { display: flex; flex-wrap: wrap; gap: 8px; }
+.badge { padding: 5px 13px; border-radius: 18px; font-size: 12px; border: .5px solid var(--border-strong); color: var(--text-muted); background: var(--ivory); }
+.badge.hi { background: var(--gold-pale); border-color: var(--gold); color: #7A5A20; font-weight: 500; }
+
+.decision-box { background: var(--dark-brown); border-radius: 10px; padding: 28px 32px; }
+.decision-box-title { font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--gold-light); margin-bottom: 18px; font-weight: 400; }
+.decision-list { list-style: none; display: grid; grid-template-columns: repeat(auto-fill, minmax(210px,1fr)); gap: 10px; }
+.decision-list li { display: flex; align-items: flex-start; gap: 10px; font-size: 13.5px; color: rgba(247,244,238,.8); font-weight: 300; line-height: 1.5; }
+.decision-list li::before { content: '✓'; color: var(--gold-light); font-size: 12px; flex-shrink: 0; margin-top: 2px; }
+
+/* ── CTA 버튼 영역 ── */
+.cta-section {
+  max-width: 840px;
+  margin: 60px auto 0;
+  padding: 0 32px 80px;
+  text-align: center;
+}
+.cta-divider { height: .5px; background: var(--border); margin-bottom: 52px; }
+.cta-eyebrow { font-size: 10px; letter-spacing: 4px; text-transform: uppercase; color: var(--gold); margin-bottom: 14px; }
+.cta-title { font-family: 'Noto Serif KR', serif; font-size: 22px; font-weight: 400; color: var(--charcoal); margin-bottom: 10px; }
+.cta-desc { font-size: 13.5px; color: var(--text-muted); font-weight: 300; line-height: 1.9; margin-bottom: 36px; }
+.cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 18px 52px;
+  background: var(--dark-brown);
+  color: #F7F4EE;
+  border: none;
+  border-radius: 40px;
+  font-family: 'Noto Serif KR', serif;
+  font-size: 15px;
+  font-weight: 400;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: all .25s ease;
+}
+.cta-btn:hover { background: var(--gold); color: var(--dark-brown); }
+.cta-btn:active { transform: scale(.97); }
+.cta-btn-arrow { font-size: 18px; }
+.cta-note { font-size: 12px; color: var(--text-light); margin-top: 16px; }
+
+/* ── FORM (페이지 2) ── */
+.form-wrap { max-width: 840px; margin: 0 auto; padding: 44px 32px 80px; }
+
+.q-block { border-left: 2px solid var(--gold-pale); margin-bottom: 40px; padding-left: 28px; transition: border-color .3s; }
+.q-block.active { border-color: var(--gold); }
+.q-num { font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); font-weight: 400; margin-bottom: 6px; }
+.q-title { font-family: 'Noto Serif KR', serif; font-size: 18px; font-weight: 500; color: var(--charcoal); margin-bottom: 6px; }
+.q-hint { font-size: 12.5px; color: var(--text-light); margin-bottom: 20px; line-height: 1.7; }
+
+.logo-type-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; }
+.logo-type-card {
+  border: 1.5px solid var(--border); border-radius: 10px;
+  padding: 20px 12px 16px; cursor: pointer;
+  text-align: center; background: white; transition: all .22s ease; user-select: none;
+}
+.logo-type-card:hover { border-color: var(--gold-light); background: var(--ivory); }
+.logo-type-card.selected { border-color: var(--gold); background: var(--gold-pale); box-shadow: 0 0 0 3px rgba(184,146,74,.15); }
+.logo-type-card svg { display: block; margin: 0 auto 12px; }
+.logo-type-label { font-size: 13px; font-weight: 500; color: var(--charcoal); margin-bottom: 4px; }
+.logo-type-desc { font-size: 11px; color: var(--text-light); line-height: 1.5; }
+.logo-type-card.selected .logo-type-label { color: #7A5A20; }
+.logo-type-card.selected .logo-type-desc { color: #9A7A40; }
+
+/* 텍스트 인풋 */
+.q-input {
+  width: 100%; border: 1px solid var(--border); border-radius: 8px;
+  padding: 12px 16px; font-family: 'Noto Sans KR', sans-serif;
+  font-size: 14px; color: var(--text-main); background: white;
+  outline: none; transition: border-color .2s; line-height: 1.7;
+}
+.q-input:focus { border-color: var(--gold); }
+.q-input::placeholder { color: var(--text-light); }
+.q-textarea { min-height: 110px; resize: vertical; }
+
+.input-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px; }
+
+/* 파일 업로드 */
+.file-drop {
+  border: 1.5px dashed var(--border-strong); border-radius: 10px;
+  padding: 32px 20px; text-align: center; cursor: pointer;
+  background: white; transition: all .22s; position: relative;
+}
+.file-drop:hover, .file-drop.over { border-color: var(--gold); background: var(--gold-pale); }
+.file-drop input[type="file"] { position: absolute; inset: 0; opacity: 0; cursor: pointer; width: 100%; height: 100%; }
+.file-icon { font-size: 26px; margin-bottom: 10px; }
+.file-label { font-size: 14px; color: var(--text-muted); margin-bottom: 4px; }
+.file-label strong { color: var(--gold); font-weight: 500; }
+.file-sub { font-size: 11px; color: var(--text-light); }
+.file-list { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 8px; }
+.file-chip { display: inline-flex; align-items: center; gap: 6px; background: var(--ivory); border: 1px solid var(--border-strong); border-radius: 20px; padding: 4px 12px; font-size: 12px; color: var(--text-muted); }
+.file-chip button { border: none; background: none; cursor: pointer; color: var(--text-light); font-size: 14px; line-height: 1; padding: 0; }
+
+/* 분위기 칩 */
+.mood-grid { display: flex; flex-wrap: wrap; gap: 8px; }
+.mood-chip {
+  display: inline-flex; align-items: center; gap: 7px;
+  padding: 9px 16px; border: 1.5px solid var(--border); border-radius: 24px;
+  cursor: pointer; background: white; font-size: 13px; color: var(--text-muted);
+  font-weight: 400; transition: all .18s ease; user-select: none;
+}
+.mood-chip:hover { border-color: var(--gold-light); color: var(--charcoal); }
+.mood-chip.selected { border-color: var(--gold); background: var(--gold-pale); color: #7A5A20; font-weight: 500; }
+.mood-chip.avoid.selected { border-color: #B8714A; background: #FEF0E8; color: #8A3C1C; }
+.chip-icon { font-size: 15px; }
+
+.form-divider { display: flex; align-items: center; gap: 16px; margin: 44px 0 40px; }
+.form-divider::before, .form-divider::after { content: ''; flex: 1; height: .5px; background: var(--border); }
+.form-divider span { font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--text-light); white-space: nowrap; }
+
+.err-msg { font-size: 12px; color: #B8714A; margin-top: 10px; display: none; }
+
+/* 제출 버튼 */
+.submit-wrap { text-align: center; padding-top: 8px; }
+.submit-btn {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 16px 48px; background: var(--dark-brown); color: #F7F4EE;
+  border: none; border-radius: 36px;
+  font-family: 'Noto Sans KR', sans-serif; font-size: 14px; font-weight: 400;
+  letter-spacing: 1.5px; cursor: pointer; transition: all .25s ease;
+  position: relative;
+}
+.submit-btn:hover { background: var(--gold); color: var(--dark-brown); }
+.submit-btn:active { transform: scale(.97); }
+.submit-btn:disabled { opacity: .6; cursor: not-allowed; }
+.submit-note { font-size: 12px; color: var(--text-light); margin-top: 14px; }
+
+/* 로딩 스피너 */
+.spinner {
+  display: none;
+  width: 16px; height: 16px;
+  border: 2px solid rgba(247,244,238,.3);
+  border-top-color: #F7F4EE;
+  border-radius: 50%;
+  animation: spin .7s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* 완료 화면 */
+.success-screen { display: none; max-width: 640px; margin: 0 auto; padding: 64px 32px 80px; text-align: center; }
+.success-icon {
+  width: 64px; height: 64px; border-radius: 50%;
+  background: var(--gold-pale); border: 1.5px solid var(--gold);
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 24px; font-size: 26px;
+}
+.success-title { font-family: 'Noto Serif KR', serif; font-size: 24px; font-weight: 400; color: var(--charcoal); margin-bottom: 12px; }
+.success-desc { font-size: 14px; color: var(--text-muted); line-height: 1.9; margin-bottom: 36px; }
+.success-summary { background: var(--ivory); border: 1px solid var(--border); border-radius: 12px; padding: 24px 28px; text-align: left; }
+.summary-row { display: flex; gap: 16px; padding: 12px 0; border-bottom: .5px solid var(--border); font-size: 13.5px; }
+.summary-row:last-child { border-bottom: none; }
+.summary-label { color: var(--text-light); width: 88px; flex-shrink: 0; padding-top: 2px; }
+.summary-value { color: var(--charcoal); flex: 1; line-height: 1.7; }
+.summary-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.summary-tag { padding: 3px 10px; border-radius: 12px; font-size: 12px; background: var(--gold-pale); color: #7A5A20; border: 1px solid var(--gold); }
+.summary-tag.avoid { background: #FEF0E8; color: #8A3C1C; border-color: #B8714A; }
+
+/* 푸터 */
+.footer { background: var(--dark-brown); padding: 44px 40px; text-align: center; }
+.footer-logo { font-family: 'Noto Serif KR', serif; font-size: 17px; font-weight: 400; color: #F7F4EE; letter-spacing: 2px; margin-bottom: 6px; }
+.footer-sub { font-size: 10px; letter-spacing: 3px; color: var(--gold-light); text-transform: uppercase; font-weight: 300; margin-bottom: 22px; }
+.footer-note { font-size: 12px; color: rgba(247,244,238,.35); font-weight: 300; line-height: 1.8; }
+
+@media (max-width: 600px) {
+  .header, .header-back { padding-left: 20px; padding-right: 20px; }
+  .section-header, .process, .form-wrap, .cta-section { padding-left: 20px; padding-right: 20px; }
+  .flow-overview { margin-left: 20px; margin-right: 20px; }
+  .logo-type-grid { grid-template-columns: 1fr; }
+  .input-row { grid-template-columns: 1fr; }
+  .q-block { padding-left: 18px; }
+  .step { grid-template-columns: 50px 1fr; }
+  .back-btn { position: static; transform: none; margin-bottom: 20px; align-self: flex-start; }
+  .header-back { flex-direction: column; align-items: flex-start; padding-top: 40px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ════════════════════════════════
+     PAGE 1 : 프로세스 안내
+════════════════════════════════ -->
+<div id="page1" class="page active">
+
+  <header class="header">
+    <p class="header-eyebrow">컨빌디자인 · Church Logo Service</p>
+    <h1 class="header-title">교회 <em>로고 제작</em><br>프로세스 안내</h1>
+    <p class="header-subtitle">우리 교회만의 정체성을 담은 로고를 함께 만들어갑니다</p>
+    <div class="header-line"></div>
+  </header>
+
+  <div class="section-header">
+    <div class="section-label"><span>Logo Production Process</span></div>
+    <h2 class="section-title">로고 제작, 이렇게 진행됩니다</h2>
+    <p class="section-desc">고객과의 충분한 소통을 바탕으로, 단계적이고 체계적인 방식으로 진행합니다.</p>
+  </div>
+
+  <div class="flow-overview" style="margin-left:auto;margin-right:auto;max-width:776px;margin-top:32px;">
+    <div class="flow-steps">
+      <span class="flow-pill">질문지 작성</span>
+      <span class="flow-arrow">→</span>
+      <span class="flow-pill">시안 제안 (3일 이내)</span>
+      <span class="flow-arrow">→</span>
+      <span class="flow-pill">수정 (최대 2회)</span>
+      <span class="flow-arrow">→</span>
+      <span class="flow-pill">최종 확정</span>
+      <span class="flow-arrow">→</span>
+      <span class="flow-pill">응용 이미지 제작</span>
+    </div>
+  </div>
+
+  <div class="process">
+
+    <div class="step">
+      <div class="step-left"><div class="step-num">01</div><div class="step-line"></div></div>
+      <div class="step-body">
+        <span class="step-tag">Direction Survey</span>
+        <h3 class="step-title">로고 방향성 질문지 작성</h3>
+        <p class="step-desc">로고 제작에 앞서 교회의 정체성과 방향성을 파악하기 위한 질문지를 작성합니다. 로고 형태, 교회 가치, 선호하는 분위기 등을 답변해 주시면 됩니다.</p>
+        <div class="badge-row">
+          <span class="badge">로고 형태 선택</span>
+          <span class="badge">교회 핵심 가치</span>
+          <span class="badge">선호·기피 분위기</span>
+          <span class="badge">참고 이미지 첨부</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-left"><div class="step-num">02</div><div class="step-line"></div></div>
+      <div class="step-body">
+        <span class="step-tag">Design Proposal</span>
+        <h3 class="step-title">로고 시안 제안</h3>
+        <p class="step-desc">질문지 답변을 바탕으로 컨빌 디자인팀이 시안을 준비합니다. 답변 접수 후 <strong style="color:var(--gold);font-weight:500;">3일 이내</strong>에 로고 시안을 제안해 드립니다.</p>
+        <div class="badge-row">
+          <span class="badge hi">3안 또는 4안 제공</span>
+          <span class="badge">교회 정체성 반영</span>
+          <span class="badge">목회 철학 기반 디자인</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-left"><div class="step-num">03</div><div class="step-line"></div></div>
+      <div class="step-body">
+        <span class="step-tag">Revision</span>
+        <h3 class="step-title">시안 검토 및 수정</h3>
+        <p class="step-desc">제안된 시안을 교회와 함께 검토하고 피드백을 반영합니다. 수정은 최대 <strong style="color:var(--gold);font-weight:500;">2회</strong>까지 제공됩니다.</p>
+        <div class="badge-row">
+          <span class="badge">1차 수정</span>
+          <span class="badge">2차 수정 (최종 조율)</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-left"><div class="step-num">04</div><div class="step-line"></div></div>
+      <div class="step-body">
+        <span class="step-tag">Confirmation</span>
+        <h3 class="step-title">최종 로고 확정</h3>
+        <p class="step-desc">최종 로고를 확정하고 인쇄·디지털 환경 모두에서 사용 가능한 다양한 파일 형식으로 제공합니다.</p>
+        <div class="badge-row">
+          <span class="badge">AI / SVG 원본</span>
+          <span class="badge">PNG 투명 배경</span>
+          <span class="badge">JPG 배경 포함</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-left"><div class="step-num">05</div><div class="step-line"></div></div>
+      <div class="step-body">
+        <span class="step-tag">Application Design</span>
+        <h3 class="step-title">응용 이미지 제작</h3>
+        <p class="step-desc">최종 로고 확정 후, 실제 사용 환경에 맞는 응용 이미지를 함께 제작합니다. 현수막·주보·SNS 등 다양한 매체에 적용한 결과물을 제공합니다.</p>
+        <div class="badge-row">
+          <span class="badge">현수막 적용</span>
+          <span class="badge">주보 / 인쇄물</span>
+          <span class="badge">SNS 프로필</span>
+          <span class="badge">간판 예시</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-left">
+        <div class="step-num" style="background:var(--gold-pale);border-color:var(--gold);color:var(--gold);">✓</div>
+      </div>
+      <div class="step-body">
+        <span class="step-tag">Summary</span>
+        <h3 class="step-title">최종 결정사항 요약</h3>
+        <p class="step-desc" style="margin-bottom:16px;">컨빌디자인의 교회 로고 제작 서비스는 아래의 원칙으로 진행됩니다.</p>
+        <div class="decision-box">
+          <p class="decision-box-title">Service Commitment</p>
+          <ul class="decision-list">
+            <li>로고 제작 전 질문지 수집</li>
+            <li>HTML 폼으로 답변 접수</li>
+            <li>답변 후 3일 이내 시안 제안</li>
+            <li>로고 시안 3~4안 제공</li>
+            <li>수정은 최대 2회 제공</li>
+            <li>최종 확정 후 응용 이미지 제작</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /process -->
+
+  <!-- CTA -->
+  <div class="cta-section">
+    <div class="cta-divider"></div>
+    <p class="cta-eyebrow">Start Here</p>
+    <h2 class="cta-title">지금 바로 시작하실 수 있습니다</h2>
+    <p class="cta-desc">
+      질문지를 작성해 주시면 컨빌디자인 팀이 검토 후<br>
+      <strong style="color:var(--gold);font-weight:500;">3일 이내</strong>에 로고 시안 3~4안을 제안드립니다.
+    </p>
+    <button class="cta-btn" onclick="goToForm()">
+      <span>로고 질문지 작성하기</span>
+      <span class="cta-btn-arrow">✍</span>
+    </button>
+    <p class="cta-note">작성 시간 약 3분 · 5가지 질문</p>
+  </div>
+
+  <footer class="footer">
+    <p class="footer-logo">컨빌디자인</p>
+    <p class="footer-sub">Church Interior Studio</p>
+    <p class="footer-note">성도가 머물고 싶은 공간, 청년이 찾아오는 교회<br>10년간 350개 공간을 디자인한 컨빌이 교회의 브랜드를 함께 만들어갑니다.</p>
+  </footer>
+
+</div><!-- /page1 -->
+
+
+<!-- ════════════════════════════════
+     PAGE 2 : 질문지
+════════════════════════════════ -->
+<div id="page2" class="page">
+
+  <header class="header">
+    <p class="header-eyebrow">로고 방향성 질문지</p>
+    <h1 class="header-title" style="font-size:clamp(22px,4vw,34px);margin-bottom:8px;">교회 <em>로고 제작</em> 질문지</h1>
+    <p class="header-subtitle">5가지 질문 · 작성 시간 약 3분</p>
+    <div class="header-line"></div>
+  </header>
+
+  <!-- 폼 -->
+  <div id="formSection">
+
+    <div style="max-width:840px;margin:0 auto;padding:40px 32px 0;">
+      <!-- 뒤로가기 버튼 -->
+      <button onclick="goBack()" style="
+        display:inline-flex; align-items:center; gap:8px;
+        background:none; border:1px solid var(--border-strong);
+        border-radius:24px; padding:9px 20px;
+        font-family:'Noto Sans KR',sans-serif; font-size:13px;
+        color:var(--text-muted); cursor:pointer;
+        transition:all .2s; margin-bottom:28px;
+        letter-spacing:.5px;
+      " onmouseover="this.style.borderColor='var(--gold)';this.style.color='var(--gold)';"
+         onmouseout="this.style.borderColor='var(--border-strong)';this.style.color='var(--text-muted)';">
+        ← 프로세스 안내로 돌아가기
+      </button>
+
+      <p style="font-size:14px;color:var(--text-muted);font-weight:300;line-height:1.9;">
+        답변해 주신 내용을 바탕으로 컨빌디자인이 교회의 정체성에 맞는 로고 시안 <strong style="color:var(--gold);font-weight:500;">3~4안</strong>을 제안드립니다.<br>
+        솔직하고 자유롭게 작성해 주실수록 더 잘 맞는 로고가 탄생합니다.
+      </p>
+    </div>
+
+    <div class="form-wrap">
+
+      <!-- 기본 정보 -->
+      <div class="q-block active" id="qb0">
+        <p class="q-num">Basic Info</p>
+        <h3 class="q-title">교회 기본 정보를 입력해 주세요</h3>
+        <p class="q-hint">담당자 연락처로 로고 시안을 보내드립니다.</p>
+        <div class="input-row">
+          <input class="q-input" id="churchName" type="text" placeholder="교회 이름" onfocus="activateBlock('qb0')" onblur="deactivateBlock('qb0')">
+          <input class="q-input" id="contactName" type="text" placeholder="담당자 이름" onfocus="activateBlock('qb0')" onblur="deactivateBlock('qb0')">
+        </div>
+        <div class="input-row">
+          <input class="q-input" id="contactPhone" type="tel" placeholder="연락처 (010-0000-0000)" onfocus="activateBlock('qb0')" onblur="deactivateBlock('qb0')">
+          <input class="q-input" id="contactEmail" type="email" placeholder="이메일 주소" onfocus="activateBlock('qb0')" onblur="deactivateBlock('qb0')">
+        </div>
+        <p class="err-msg" id="basicError">교회 이름과 연락처를 입력해 주세요.</p>
+      </div>
+
+      <div class="form-divider"><span>다음 질문</span></div>
+
+      <!-- Q1 로고 형태 -->
+      <div class="q-block" id="qb1">
+        <p class="q-num">Question 01</p>
+        <h3 class="q-title">원하시는 로고의 형태를 선택해 주세요</h3>
+        <p class="q-hint">세 가지 유형 중 선택해 주세요. 복수 선택도 가능합니다.</p>
+        <div class="logo-type-grid">
+
+          <div class="logo-type-card" data-type="타이포형" onclick="selectLogo(this)">
+            <svg width="120" height="76" viewBox="0 0 120 76" fill="none">
+              <rect width="120" height="76" rx="6" fill="#F7F4EE"/>
+              <text x="60" y="29" text-anchor="middle" font-family="Georgia,serif" font-size="18" fill="#2A2520" font-weight="700" letter-spacing="1">빛의교회</text>
+              <rect x="16" y="37" width="88" height="1" fill="#B8924A"/>
+              <text x="60" y="55" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#B8924A" letter-spacing="5">CHURCH OF LIGHT</text>
+            </svg>
+            <p class="logo-type-label">타이포형</p>
+            <p class="logo-type-desc">교회 이름을 글자 디자인으로 표현</p>
+          </div>
+
+          <div class="logo-type-card" data-type="심볼형" onclick="selectLogo(this)">
+            <svg width="120" height="76" viewBox="0 0 120 76" fill="none">
+              <rect width="120" height="76" rx="6" fill="#F7F4EE"/>
+              <circle cx="60" cy="38" r="22" stroke="#2A2520" stroke-width="1.5" fill="none"/>
+              <rect x="57.5" y="20" width="5" height="36" rx="2" fill="#2A2520"/>
+              <rect x="46" y="30" width="28" height="5" rx="2" fill="#2A2520"/>
+              <circle cx="60" cy="38" r="22" stroke="#B8924A" stroke-width=".6" fill="none" stroke-dasharray="3 5"/>
+            </svg>
+            <p class="logo-type-label">심볼형</p>
+            <p class="logo-type-desc">상징 이미지만으로 표현하는 로고</p>
+          </div>
+
+          <div class="logo-type-card" data-type="타이포+심볼 결합형" onclick="selectLogo(this)">
+            <svg width="120" height="76" viewBox="0 0 120 76" fill="none">
+              <rect width="120" height="76" rx="6" fill="#F7F4EE"/>
+              <rect x="12" y="22" width="5" height="32" rx="2" fill="#2A2520"/>
+              <rect x="7" y="31" width="15" height="5" rx="2" fill="#2A2520"/>
+              <rect x="31" y="20" width="1" height="36" fill="#E0D8CC"/>
+              <text x="42" y="34" font-family="Georgia,serif" font-size="14" fill="#2A2520" font-weight="700">소망교회</text>
+              <rect x="42" y="41" width="70" height=".8" fill="#B8924A"/>
+              <text x="42" y="55" font-family="Georgia,serif" font-size="9" fill="#B8924A" letter-spacing="3">HOPE CHURCH</text>
+            </svg>
+            <p class="logo-type-label">타이포 + 심볼</p>
+            <p class="logo-type-desc">상징 이미지와 글자를 함께 사용</p>
+          </div>
+
+        </div>
+        <p class="err-msg" id="logoTypeError">로고 형태를 하나 이상 선택해 주세요.</p>
+      </div>
+
+      <div class="form-divider"><span>다음 질문</span></div>
+
+      <!-- Q2 교회 가치 -->
+      <div class="q-block" id="qb2">
+        <p class="q-num">Question 02</p>
+        <h3 class="q-title">교회에서 중요하게 생각하는 가치는 무엇인가요?</h3>
+        <p class="q-hint">예) 회복, 선교, 공동체, 말씀, 청년, 치유, 섬김, 환대… 자유롭게 작성해 주세요.</p>
+        <textarea class="q-input q-textarea" id="churchValue" placeholder="교회의 비전과 핵심 가치를 적어주세요." onfocus="activateBlock('qb2')" onblur="deactivateBlock('qb2')"></textarea>
+        <p class="err-msg" id="valueError">내용을 입력해 주세요.</p>
+      </div>
+
+      <div class="form-divider"><span>다음 질문</span></div>
+
+      <!-- Q3 파일 첨부 -->
+      <div class="q-block" id="qb3">
+        <p class="q-num">Question 03</p>
+        <h3 class="q-title">참고하고 싶은 이미지나 상징이 있다면 첨부해 주세요</h3>
+        <p class="q-hint">마음에 드는 로고, 교회 상징물, 선호하는 이미지 파일을 올려주세요. <span style="color:var(--gold)">선택 항목</span>입니다.</p>
+        <div class="file-drop" id="fileDrop"
+          ondragover="event.preventDefault();this.classList.add('over')"
+          ondragleave="this.classList.remove('over')"
+          ondrop="handleDrop(event)">
+          <input type="file" id="fileInput" multiple accept="image/*,.pdf" onchange="handleFiles(this.files)">
+          <div class="file-icon">🖼</div>
+          <p class="file-label"><strong>클릭하거나 파일을 끌어다 놓으세요</strong></p>
+          <p class="file-sub">JPG · PNG · PDF · 최대 10MB</p>
+        </div>
+        <div class="file-list" id="fileList"></div>
+      </div>
+
+      <div class="form-divider"><span>다음 질문</span></div>
+
+      <!-- Q4 선호 분위기 -->
+      <div class="q-block" id="qb4">
+        <p class="q-num">Question 04</p>
+        <h3 class="q-title">선호하는 분위기를 선택해 주세요</h3>
+        <p class="q-hint">원하는 분위기를 모두 선택해 주세요. 복수 선택 가능합니다.</p>
+        <div class="mood-grid">
+          <div class="mood-chip" onclick="toggleMood(this,'like')"><span class="chip-icon">🌿</span>부드럽고 따뜻한</div>
+          <div class="mood-chip" onclick="toggleMood(this,'like')"><span class="chip-icon">⬜</span>심플하고 모던한</div>
+          <div class="mood-chip" onclick="toggleMood(this,'like')"><span class="chip-icon">✝</span>경건하고 장엄한</div>
+          <div class="mood-chip" onclick="toggleMood(this,'like')"><span class="chip-icon">🌟</span>역동적이고 젊은</div>
+          <div class="mood-chip" onclick="toggleMood(this,'like')"><span class="chip-icon">📖</span>전통적이고 고전적인</div>
+          <div class="mood-chip" onclick="toggleMood(this,'like')"><span class="chip-icon">🌱</span>자연친화적이고 유기적인</div>
+          <div class="mood-chip" onclick="toggleMood(this,'like')"><span class="chip-icon">✦</span>세련되고 고급스러운</div>
+          <div class="mood-chip" onclick="toggleMood(this,'like')"><span class="chip-icon">🕊</span>평화롭고 차분한</div>
+          <div class="mood-chip" onclick="toggleMood(this,'like')"><span class="chip-icon">🔥</span>열정적이고 강렬한</div>
+          <div class="mood-chip" onclick="toggleMood(this,'like')"><span class="chip-icon">🤍</span>깨끗하고 순수한</div>
+        </div>
+        <p class="err-msg" id="likeError">분위기를 하나 이상 선택해 주세요.</p>
+      </div>
+
+      <div class="form-divider"><span>다음 질문</span></div>
+
+      <!-- Q5 피하고 싶은 분위기 -->
+      <div class="q-block" id="qb5">
+        <p class="q-num">Question 05</p>
+        <h3 class="q-title">피하고 싶은 분위기가 있다면 선택해 주세요</h3>
+        <p class="q-hint">원치 않는 이미지를 알려주시면 더욱 정확한 시안을 제안드릴 수 있습니다. <span style="color:var(--gold)">선택 항목</span>입니다.</p>
+        <div class="mood-grid">
+          <div class="mood-chip avoid" onclick="toggleMood(this,'avoid')"><span class="chip-icon">🌑</span>어둡고 무거운</div>
+          <div class="mood-chip avoid" onclick="toggleMood(this,'avoid')"><span class="chip-icon">🎪</span>복잡하고 화려한</div>
+          <div class="mood-chip avoid" onclick="toggleMood(this,'avoid')"><span class="chip-icon">🎈</span>가볍고 유치한</div>
+          <div class="mood-chip avoid" onclick="toggleMood(this,'avoid')"><span class="chip-icon">🧊</span>차갑고 딱딱한</div>
+          <div class="mood-chip avoid" onclick="toggleMood(this,'avoid')"><span class="chip-icon">🏢</span>기업적이고 사무적인</div>
+          <div class="mood-chip avoid" onclick="toggleMood(this,'avoid')"><span class="chip-icon">📺</span>올드하고 낡은 느낌</div>
+          <div class="mood-chip avoid" onclick="toggleMood(this,'avoid')"><span class="chip-icon">⚡</span>너무 강렬하고 자극적인</div>
+          <div class="mood-chip avoid" onclick="toggleMood(this,'avoid')"><span class="chip-icon">🌀</span>복잡한 형태와 패턴</div>
+          <div class="mood-chip avoid" onclick="toggleMood(this,'avoid')"><span class="chip-icon">🎭</span>과도하게 장식적인</div>
+          <div class="mood-chip avoid" onclick="toggleMood(this,'avoid')"><span class="chip-icon">🚀</span>미래지향적·SF적인</div>
+        </div>
+      </div>
+
+      <div class="form-divider"><span></span></div>
+
+      <div class="submit-wrap">
+        <button class="submit-btn" id="submitBtn" onclick="submitForm()">
+          <div class="spinner" id="spinner"></div>
+          <span id="submitText">질문지 제출하기 →</span>
+        </button>
+        <p class="submit-note">제출 후 3일 이내에 담당자가 연락드립니다.</p>
+      </div>
+
+    </div><!-- /form-wrap -->
+  </div><!-- /formSection -->
+
+  <!-- 완료 화면 -->
+  <div class="success-screen" id="successScreen">
+    <div class="success-icon">✓</div>
+    <h2 class="success-title">질문지가 제출되었습니다</h2>
+    <p class="success-desc">
+      답변해 주신 내용을 바탕으로 컨빌디자인 팀이 로고 시안을 준비합니다.<br>
+      <strong style="color:var(--gold);font-weight:500;">3일 이내</strong>로 3~4가지 로고 시안을 제안드리겠습니다.
+    </p>
+    <div class="success-summary" id="successSummary"></div>
+    <div style="margin-top:32px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+      <button onclick="goBack()" style="padding:12px 28px;border:1px solid var(--border-strong);border-radius:30px;background:none;color:var(--text-muted);font-size:13px;cursor:pointer;font-family:'Noto Sans KR',sans-serif;">
+        ← 처음으로
+      </button>
+      <a href="https://convill-homepage-ver2.vercel.app/" target="_blank"
+        style="display:inline-block;padding:12px 28px;border:1px solid var(--gold);border-radius:30px;color:var(--gold);font-size:13px;text-decoration:none;">
+        컨빌디자인 홈페이지 →
+      </a>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <p class="footer-logo">컨빌디자인</p>
+    <p class="footer-sub">Church Interior Studio</p>
+    <p class="footer-note">성도가 머물고 싶은 공간, 청년이 찾아오는 교회<br>10년간 350개 공간을 디자인한 컨빌이 교회의 브랜드를 함께 만들어갑니다.</p>
+  </footer>
+
+</div><!-- /page2 -->
+
+
+<script>
+/* ─────────────────────────────────────────
+   ★ Google Apps Script 웹앱 URL을 여기에 붙여넣으세요
+   설정 방법은 파일 하단 주석 참고
+───────────────────────────────────────── */
+var APPS_SCRIPT_URL = 'YOUR_APPS_SCRIPT_URL_HERE';
+
+/* ─── 페이지 전환 ─── */
+function goToForm() {
+  document.getElementById('page1').classList.remove('active');
+  document.getElementById('page2').classList.add('active');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+function goBack() {
+  document.getElementById('page2').classList.remove('active');
+  document.getElementById('page1').classList.add('active');
+  document.getElementById('successScreen').style.display = 'none';
+  document.getElementById('formSection').style.display = 'block';
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+/* ─── 폼 상태 ─── */
+var selectedLogos = new Set();
+var selectedLike  = new Set();
+var selectedAvoid = new Set();
+var uploadedFiles = [];
+
+function selectLogo(card) {
+  var type = card.dataset.type;
+  if (selectedLogos.has(type)) { selectedLogos.delete(type); card.classList.remove('selected'); }
+  else { selectedLogos.add(type); card.classList.add('selected'); }
+  activateBlock('qb1');
+  document.getElementById('logoTypeError').style.display = 'none';
+}
+
+function toggleMood(chip, kind) {
+  var label = chip.textContent.trim();
+  if (kind === 'like') {
+    if (selectedLike.has(label)) { selectedLike.delete(label); chip.classList.remove('selected'); }
+    else { selectedLike.add(label); chip.classList.add('selected'); }
+    document.getElementById('likeError').style.display = 'none';
+  } else {
+    if (selectedAvoid.has(label)) { selectedAvoid.delete(label); chip.classList.remove('selected'); }
+    else { selectedAvoid.add(label); chip.classList.add('selected'); }
+  }
+}
+
+function activateBlock(id) {
+  document.querySelectorAll('.q-block').forEach(function(b){ b.classList.remove('active'); });
+  document.getElementById(id).classList.add('active');
+}
+function deactivateBlock(id) { document.getElementById(id).classList.remove('active'); }
+
+/* ─── 파일 업로드 ─── */
+function handleFiles(files) {
+  Array.from(files).forEach(function(f){
+    if (!uploadedFiles.find(function(u){ return u.name === f.name; })) uploadedFiles.push(f);
+  });
+  renderFiles();
+}
+function handleDrop(e) {
+  e.preventDefault();
+  document.getElementById('fileDrop').classList.remove('over');
+  handleFiles(e.dataTransfer.files);
+}
+function renderFiles() {
+  document.getElementById('fileList').innerHTML = uploadedFiles.map(function(f, i){
+    return '<div class="file-chip">📎 ' + f.name + ' <button onclick="removeFile(' + i + ')">✕</button></div>';
+  }).join('');
+}
+function removeFile(i) { uploadedFiles.splice(i, 1); renderFiles(); }
+
+/* ─── 유효성 검사 ─── */
+function validate() {
+  var valid = true;
+  var firstErr = null;
+
+  var churchName = document.getElementById('churchName').value.trim();
+  var contactPhone = document.getElementById('contactPhone').value.trim();
+  if (!churchName || !contactPhone) {
+    document.getElementById('basicError').style.display = 'block';
+    firstErr = firstErr || 'qb0';
+    valid = false;
+  }
+  if (selectedLogos.size === 0) {
+    document.getElementById('logoTypeError').style.display = 'block';
+    firstErr = firstErr || 'qb1';
+    valid = false;
+  }
+  if (!document.getElementById('churchValue').value.trim()) {
+    document.getElementById('valueError').style.display = 'block';
+    firstErr = firstErr || 'qb2';
+    valid = false;
+  }
+  if (selectedLike.size === 0) {
+    document.getElementById('likeError').style.display = 'block';
+    firstErr = firstErr || 'qb4';
+    valid = false;
+  }
+
+  if (firstErr) {
+    document.getElementById(firstErr).scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
+  return valid;
+}
+
+/* ─── 제출 ─── */
+function submitForm() {
+  if (!validate()) return;
+
+  var now = new Date();
+  var timestamp = now.toLocaleString('ko-KR', { timeZone: 'Asia/Seoul' });
+
+  var payload = {
+    timestamp:    timestamp,
+    churchName:   document.getElementById('churchName').value.trim(),
+    contactName:  document.getElementById('contactName').value.trim(),
+    contactPhone: document.getElementById('contactPhone').value.trim(),
+    contactEmail: document.getElementById('contactEmail').value.trim(),
+    logoType:     Array.from(selectedLogos).join(', '),
+    churchValue:  document.getElementById('churchValue').value.trim(),
+    fileNames:    uploadedFiles.map(function(f){ return f.name; }).join(', ') || '없음',
+    likeMood:     Array.from(selectedLike).join(', '),
+    avoidMood:    Array.from(selectedAvoid).join(', ') || '없음'
+  };
+
+  /* 로딩 상태 */
+  var btn = document.getElementById('submitBtn');
+  var spinner = document.getElementById('spinner');
+  var submitText = document.getElementById('submitText');
+  btn.disabled = true;
+  spinner.style.display = 'block';
+  submitText.textContent = '제출 중...';
+
+  /* Google Sheets 전송 */
+  var sendToSheets = APPS_SCRIPT_URL !== 'YOUR_APPS_SCRIPT_URL_HERE'
+    ? fetch(APPS_SCRIPT_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      })
+    : Promise.resolve();
+
+  sendToSheets
+    .then(function() { showSuccess(payload); })
+    .catch(function() { showSuccess(payload); }); /* 연결 전에도 완료 화면 표시 */
+}
+
+function showSuccess(payload) {
+  var likeHtml  = payload.likeMood
+    ? payload.likeMood.split(', ').map(function(t){ return '<span class="summary-tag">' + t + '</span>'; }).join('')
+    : '<span style="color:var(--text-light)">없음</span>';
+  var avoidHtml = payload.avoidMood && payload.avoidMood !== '없음'
+    ? payload.avoidMood.split(', ').map(function(t){ return '<span class="summary-tag avoid">' + t + '</span>'; }).join('')
+    : '<span style="color:var(--text-light);font-size:13px;">선택 없음</span>';
+
+  document.getElementById('successSummary').innerHTML =
+    row('교회명', payload.churchName) +
+    row('담당자', payload.contactName + (payload.contactPhone ? ' · ' + payload.contactPhone : '')) +
+    row('이메일', payload.contactEmail || '미입력') +
+    row('로고 형태', payload.logoType) +
+    row('교회 가치', payload.churchValue) +
+    row('참고 파일', payload.fileNames) +
+    '<div class="summary-row"><span class="summary-label">선호 분위기</span><span class="summary-value"><div class="summary-tags">' + likeHtml + '</div></span></div>' +
+    '<div class="summary-row"><span class="summary-label">피할 분위기</span><span class="summary-value"><div class="summary-tags">' + avoidHtml + '</div></span></div>';
+
+  document.getElementById('formSection').style.display = 'none';
+  var s = document.getElementById('successScreen');
+  s.style.display = 'block';
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function row(label, value) {
+  return '<div class="summary-row"><span class="summary-label">' + label + '</span><span class="summary-value">' + (value || '—') + '</span></div>';
+}
+</script>
+
+<!--
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  📋 구글 시트 연결 방법 (3단계)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+【1단계】 구글 시트 준비
+  - 새 구글 스프레드시트 생성
+  - 1행에 아래 헤더 입력 (순서 동일하게):
+    A: 제출시간  B: 교회명  C: 담당자  D: 연락처  E: 이메일
+    F: 로고형태  G: 교회가치  H: 참고파일  I: 선호분위기  J: 피할분위기
+
+【2단계】 Apps Script 설정
+  - 시트 상단 메뉴 → 확장 프로그램 → Apps Script
+  - 아래 코드를 붙여넣고 저장:
+
+    function doPost(e) {
+      var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
+      var data  = JSON.parse(e.postData.contents);
+      sheet.appendRow([
+        data.timestamp, data.churchName, data.contactName,
+        data.contactPhone, data.contactEmail, data.logoType,
+        data.churchValue, data.fileNames, data.likeMood, data.avoidMood
+      ]);
+      return ContentService
+        .createTextOutput(JSON.stringify({ result: 'success' }))
+        .setMimeType(ContentService.MimeType.JSON);
+    }
+
+【3단계】 웹앱으로 배포
+  - Apps Script 상단 → 배포 → 새 배포
+  - 유형: 웹 앱
+  - 다음 사용자로 실행: 나 (내 계정)
+  - 액세스 권한: 모든 사용자
+  - → 배포 → 웹앱 URL 복사
+  - 이 HTML 파일 상단 APPS_SCRIPT_URL 변수에 붙여넣기 완료!
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+-->
+
+</body>
+</html>
