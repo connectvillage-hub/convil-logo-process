@@ -578,7 +578,7 @@ body {
       <div class="q-block" id="qb1">
         <p class="q-num">Question 01</p>
         <h3 class="q-title">원하시는 로고의 형태를 선택해 주세요</h3>
-        <p class="q-hint">세 가지 유형 중 선택해 주세요.</p>
+        <p class="q-hint">세 가지 유형 중 하나를 선택해 주세요.</p>
         <div class="logo-type-grid">
 
           <div class="logo-type-card" data-type="타이포형" onclick="selectLogo(this)">
@@ -773,10 +773,14 @@ var MAX_TOTAL_SIZE = 25 * 1024 * 1024; /* 총합 25MB (Apps Script 50MB 한도 �
 
 function selectLogo(card) {
   var type = card.dataset.type;
-  if (selectedLogos.has(type)) { selectedLogos.delete(type); card.classList.remove('selected'); }
-  else { selectedLogos.add(type); card.classList.add('selected'); }
+  /* 단일 선택: 다른 카드 해제 후 이 카드만 선택 */
+  selectedLogos.clear();
+  document.querySelectorAll('.logo-type-card').forEach(function(c){ c.classList.remove('selected'); });
+  selectedLogos.add(type);
+  card.classList.add('selected');
   activateBlock('qb1');
-  document.getElementById('logoTypeError').style.display = 'none';
+  var errEl = document.getElementById('logoTypeError');
+  if (errEl) errEl.style.display = 'none';
 }
 
 function toggleMood(chip, kind) {
@@ -852,7 +856,8 @@ function validate() {
     valid = false;
   }
   if (selectedLogos.size === 0) {
-    document.getElementById('logoTypeError').style.display = 'block';
+    var logoErrEl = document.getElementById('logoTypeError');
+    if (logoErrEl) logoErrEl.style.display = 'block';
     firstErr = firstErr || 'qb1';
     valid = false;
   }
