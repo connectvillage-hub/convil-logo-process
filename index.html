@@ -392,7 +392,7 @@ body {
     <div class="flow-steps">
       <span class="flow-pill">질문지 작성</span>
       <span class="flow-arrow">→</span>
-      <span class="flow-pill">시안 제안 (3일 이내)</span>
+      <span class="flow-pill">시안 제안</span>
       <span class="flow-arrow">→</span>
       <span class="flow-pill">수정 (최대 2회)</span>
       <span class="flow-arrow">→</span>
@@ -424,9 +424,9 @@ body {
       <div class="step-body">
         <span class="step-tag">Design Proposal</span>
         <h3 class="step-title">로고 시안 제안</h3>
-        <p class="step-desc">질문지 답변을 바탕으로 컨빌 디자인팀이 시안을 준비합니다. 답변 접수 후 <strong style="color:var(--gold);font-weight:500;">3일 이내</strong>에 로고 시안을 제안해 드립니다.</p>
+        <p class="step-desc">질문지 답변을 바탕으로 컨빌 디자인팀이 시안을 준비합니다. 답변 접수 후 로고 시안을 제안해 드립니다.</p>
         <div class="badge-row">
-          <span class="badge hi">3안 또는 4안 제공</span>
+          <span class="badge hi">3안 제공</span>
           <span class="badge">교회 정체성 반영</span>
           <span class="badge">목회 철학 기반 디자인</span>
         </div>
@@ -465,13 +465,7 @@ body {
       <div class="step-body">
         <span class="step-tag">Application Design</span>
         <h3 class="step-title">응용 이미지 제작</h3>
-        <p class="step-desc">최종 로고 확정 후, 실제 사용 환경에 맞는 응용 이미지를 함께 제작합니다. 현수막·주보·SNS 등 다양한 매체에 적용한 결과물을 제공합니다.</p>
-        <div class="badge-row">
-          <span class="badge">현수막 적용</span>
-          <span class="badge">주보 / 인쇄물</span>
-          <span class="badge">SNS 프로필</span>
-          <span class="badge">간판 예시</span>
-        </div>
+        <p class="step-desc">최종 로고 확정 후, 실제 사용 환경에 맞는 예시 응용 이미지를 함께 제작합니다.</p>
       </div>
     </div>
 
@@ -489,7 +483,7 @@ body {
             <li>로고 제작 전 질문지 수집</li>
             <li>HTML 폼으로 답변 접수</li>
             <li>답변 후 3일 이내 시안 제안</li>
-            <li>로고 시안 3~4안 제공</li>
+            <li>로고 시안 3안 제공</li>
             <li>수정은 최대 2회 제공</li>
             <li>최종 확정 후 응용 이미지 제작</li>
           </ul>
@@ -506,7 +500,7 @@ body {
     <h2 class="cta-title">지금 바로 시작하실 수 있습니다</h2>
     <p class="cta-desc">
       질문지를 작성해 주시면 컨빌디자인 팀이 검토 후<br>
-      <strong style="color:var(--gold);font-weight:500;">3일 이내</strong>에 로고 시안 3~4안을 제안드립니다.
+      <strong style="color:var(--gold);font-weight:500;">3일 이내</strong>에 로고 시안 3안을 제안드립니다.
     </p>
     <button class="cta-btn" onclick="goToForm()">
       <span>로고 질문지 작성하기</span>
@@ -555,8 +549,8 @@ body {
       </button>
 
       <p style="font-size:14px;color:var(--text-muted);font-weight:300;line-height:1.9;">
-        답변해 주신 내용을 바탕으로 컨빌디자인이 교회의 정체성에 맞는 로고 시안 <strong style="color:var(--gold);font-weight:500;">3~4안</strong>을 제안드립니다.<br>
-        솔직하고 자유롭게 작성해 주실수록 더 잘 맞는 로고가 탄생합니다.
+        답변해 주신 내용을 바탕으로 컨빌디자인이 교회의 정체성에 맞는 로고 시안 <strong style="color:var(--gold);font-weight:500;">3안</strong>을 제안드립니다.<br>
+        솔직하고 자유롭게 작성해 주실수록 교회와 더 잘 어울리는 로고를 제작 할 수 있습니다.
       </p>
     </div>
 
@@ -584,7 +578,7 @@ body {
       <div class="q-block" id="qb1">
         <p class="q-num">Question 01</p>
         <h3 class="q-title">원하시는 로고의 형태를 선택해 주세요</h3>
-        <p class="q-hint">세 가지 유형 중 선택해 주세요. 복수 선택도 가능합니다.</p>
+        <p class="q-hint">세 가지 유형 중 선택해 주세요.</p>
         <div class="logo-type-grid">
 
           <div class="logo-type-card" data-type="타이포형" onclick="selectLogo(this)">
@@ -625,7 +619,6 @@ body {
           </div>
 
         </div>
-        <p class="err-msg" id="logoTypeError">로고 형태를 하나 이상 선택해 주세요.</p>
       </div>
 
       <div class="form-divider"><span>다음 질문</span></div>
@@ -666,16 +659,10 @@ body {
         <h3 class="q-title">선호하는 분위기를 선택해 주세요</h3>
         <p class="q-hint">원하는 분위기를 모두 선택해 주세요. 복수 선택 가능합니다.</p>
         <div class="mood-grid">
-          <div class="mood-chip" onclick="toggleMood(this,'like')"><span class="chip-icon">🌿</span>부드럽고 따뜻한</div>
-          <div class="mood-chip" onclick="toggleMood(this,'like')"><span class="chip-icon">⬜</span>심플하고 모던한</div>
-          <div class="mood-chip" onclick="toggleMood(this,'like')"><span class="chip-icon">✝</span>경건하고 장엄한</div>
-          <div class="mood-chip" onclick="toggleMood(this,'like')"><span class="chip-icon">🌟</span>역동적이고 젊은</div>
-          <div class="mood-chip" onclick="toggleMood(this,'like')"><span class="chip-icon">📖</span>전통적이고 고전적인</div>
-          <div class="mood-chip" onclick="toggleMood(this,'like')"><span class="chip-icon">🌱</span>자연친화적이고 유기적인</div>
-          <div class="mood-chip" onclick="toggleMood(this,'like')"><span class="chip-icon">✦</span>세련되고 고급스러운</div>
-          <div class="mood-chip" onclick="toggleMood(this,'like')"><span class="chip-icon">🕊</span>평화롭고 차분한</div>
-          <div class="mood-chip" onclick="toggleMood(this,'like')"><span class="chip-icon">🔥</span>열정적이고 강렬한</div>
-          <div class="mood-chip" onclick="toggleMood(this,'like')"><span class="chip-icon">🤍</span>깨끗하고 순수한</div>
+          <div class="mood-chip" onclick="toggleMood(this,'like')">부드럽고 따뜻한</div>
+          <div class="mood-chip" onclick="toggleMood(this,'like')">경건하고 장엄한</div>
+          <div class="mood-chip" onclick="toggleMood(this,'like')">역동적이고 젊은</div>
+          <div class="mood-chip" onclick="toggleMood(this,'like')">세련되고 고급스러운</div>
         </div>
         <p class="err-msg" id="likeError">분위기를 하나 이상 선택해 주세요.</p>
       </div>
@@ -688,16 +675,11 @@ body {
         <h3 class="q-title">피하고 싶은 분위기가 있다면 선택해 주세요</h3>
         <p class="q-hint">원치 않는 이미지를 알려주시면 더욱 정확한 시안을 제안드릴 수 있습니다. <span style="color:var(--gold)">선택 항목</span>입니다.</p>
         <div class="mood-grid">
-          <div class="mood-chip avoid" onclick="toggleMood(this,'avoid')"><span class="chip-icon">🌑</span>어둡고 무거운</div>
-          <div class="mood-chip avoid" onclick="toggleMood(this,'avoid')"><span class="chip-icon">🎪</span>복잡하고 화려한</div>
-          <div class="mood-chip avoid" onclick="toggleMood(this,'avoid')"><span class="chip-icon">🎈</span>가볍고 유치한</div>
-          <div class="mood-chip avoid" onclick="toggleMood(this,'avoid')"><span class="chip-icon">🧊</span>차갑고 딱딱한</div>
-          <div class="mood-chip avoid" onclick="toggleMood(this,'avoid')"><span class="chip-icon">🏢</span>기업적이고 사무적인</div>
-          <div class="mood-chip avoid" onclick="toggleMood(this,'avoid')"><span class="chip-icon">📺</span>올드하고 낡은 느낌</div>
-          <div class="mood-chip avoid" onclick="toggleMood(this,'avoid')"><span class="chip-icon">⚡</span>너무 강렬하고 자극적인</div>
-          <div class="mood-chip avoid" onclick="toggleMood(this,'avoid')"><span class="chip-icon">🌀</span>복잡한 형태와 패턴</div>
-          <div class="mood-chip avoid" onclick="toggleMood(this,'avoid')"><span class="chip-icon">🎭</span>과도하게 장식적인</div>
-          <div class="mood-chip avoid" onclick="toggleMood(this,'avoid')"><span class="chip-icon">🚀</span>미래지향적·SF적인</div>
+          <div class="mood-chip avoid" onclick="toggleMood(this,'avoid')">어둡고 무거운</div>
+          <div class="mood-chip avoid" onclick="toggleMood(this,'avoid')">복잡하고 화려한</div>
+          <div class="mood-chip avoid" onclick="toggleMood(this,'avoid')">가볍고 유치한</div>
+          <div class="mood-chip avoid" onclick="toggleMood(this,'avoid')">차갑고 딱딱한</div>
+          <div class="mood-chip avoid" onclick="toggleMood(this,'avoid')">올드한 느낌</div>
         </div>
       </div>
 
@@ -708,7 +690,7 @@ body {
           <div class="spinner" id="spinner"></div>
           <span id="submitText">질문지 제출하기 →</span>
         </button>
-        <p class="submit-note">제출 후 3일 이내에 담당자가 연락드립니다.</p>
+        <p class="submit-note">제출 후 최대한 빠른 시일내에 담당자가 연락드립니다.</p>
       </div>
 
     </div><!-- /form-wrap -->
@@ -720,7 +702,7 @@ body {
     <h2 class="success-title">질문지가 제출되었습니다</h2>
     <p class="success-desc">
       답변해 주신 내용을 바탕으로 컨빌디자인 팀이 로고 시안을 준비합니다.<br>
-      <strong style="color:var(--gold);font-weight:500;">3일 이내</strong>로 3~4가지 로고 시안을 제안드리겠습니다.<br>
+      <strong style="color:var(--gold);font-weight:500;">최대한 빠른 시일내</strong>로 3가지 로고 시안을 제안드리겠습니다.<br>
       <span style="font-size:13px;color:var(--text-light);">이제 이 창을 닫으셔도 됩니다.</span>
     </p>
     <div class="success-summary" id="successSummary"></div>
